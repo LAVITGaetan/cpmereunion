@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const fetch = import('node-fetch');
 const axios = require('axios');
 const app = express();
 require('dotenv').config();
@@ -26,7 +25,6 @@ app.use('/api/adherents', adherentRoute);
 app.use('/accueil', async (req, res) => {
     let api_uri = 'http://cpmereunion.herokuapp.com/api/adherents';
     let adherents = [];
-
     try {
         let response = await axios.get(api_uri)
         console.log(response.data);
