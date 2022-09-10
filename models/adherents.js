@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Contact = require('./contact')
 
 // Adhérent Schema
 const AdherentSchema = new mongoose.Schema({

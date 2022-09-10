@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const axios = require('axios');
 const app = express();
+const services = require('./services/render')
 require('dotenv').config();
 const adherentRoute = require('./routes/adherents');
 
@@ -22,24 +22,7 @@ app.use('/api/adherents', adherentRoute);
 
 
 // ROUTES
-app.use('/accueil', async (req, res) => {
-    let api_uri = 'http://cpmereunion.herokuapp.com/api/adherents';
-    let adherents = [];
-    try {
-        let response = await axios.get(api_uri)
-        console.log(response.data);
-        response.data.forEach(adherent => {
-            adherents.push(adherent)
-            console.log(adherent);
-        });
-        res.render('pages/accueil', { title: 'Hello world', adherents: adherents })
-    } catch (error) {
-        console.error(error)
-    }
-})
-app.use('/', (req, res) => {
-    res.send({ message: 'hello' })
-})
+app.use('/', services.index)
 
 // connect to database
 mongoose.connect(process.env.MONGO_URI,
