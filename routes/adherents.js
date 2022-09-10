@@ -89,7 +89,7 @@ router.put('/:id', async (req, res) => {
             nom: req.body.contactSecondaire_nom,
             prenom: req.body.contactSecondaire_prenom,
             email: req.body.contactSecondaire_email,
-            ctelephone: req.body.contactSecondaire_telephone,
+            telephone: req.body.contactSecondaire_telephone,
             linkedin: req.body.contactSecondaire_linkedin
         }
     },
@@ -107,5 +107,24 @@ router.delete('/:id', async (req, res) => {
     if (!deletedAdherent) res.status(404).send({ message: `Cannot get adherent with id : ${req.params.id}` })
     res.send(deletedAdherent);
 });
+
+// PATCH status
+router.patch('/status/:id/:boolean', async (req, res) => {
+    const adherent = await Adherent.findByIdAndUpdate(req.params.id, {
+        status: req.params.boolean
+    })
+    if (!adherent) res.status(404).send({ message: `Cannot get adherent with id : ${req.params.id}` })
+    res.send(adherent);
+})
+
+// PATCH parution
+router.patch('/parution/:id/:boolean', async (req, res) => {
+    const adherent = await Adherent.findByIdAndUpdate(req.params.id, {
+        parution: req.params.boolean
+    })
+    if (!adherent) res.status(404).send({ message: `Cannot get adherent with id : ${req.params.id}` })
+    res.send(adherent);
+})
+
 
 module.exports = router;
