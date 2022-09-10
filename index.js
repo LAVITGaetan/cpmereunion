@@ -4,6 +4,7 @@ const app = express();
 const services = require('./services/render')
 require('dotenv').config();
 const adherentRoute = require('./routes/adherents');
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3000;
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+  app.use(cors(corsOptions));
 // Set view engine
 app.set('view engine', 'ejs')
 
@@ -22,7 +24,9 @@ app.use('/api/adherents', adherentRoute);
 
 
 // ROUTES
-app.use('/', services.index)
+app.use('/accueil', services.index)
+
+app.get('/adherents', services.adherents)
 
 // connect to database
 mongoose.connect(process.env.MONGO_URI,
