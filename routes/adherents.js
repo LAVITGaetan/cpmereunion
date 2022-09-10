@@ -18,9 +18,20 @@ router.post('/', (req, res) => {
         siteweb_url: req.body.siteweb_url,
         logo_url: req.body.logo_url,
         contact: {
-            contact_titre: req.body.contact_titre,
-            contact_nom: req.body.contact_nom,
-            contact_prenom: req.body.contact_prenom
+            titre: req.body.contact_titre,
+            nom: req.body.contact_nom,
+            prenom: req.body.contact_prenom,
+            email: req.body.contact_email,
+            telephone: req.body.contact_telephone,
+            linkedin: req.body.contact_linkedin
+        },
+        contactSecondaire: {
+            titre: req.body.contactSecondaire_titre,
+            nom: req.body.contactSecondaire_nom,
+            prenom: req.body.contactSecondaire_prenom,
+            email: req.body.contactSecondaire_email,
+            ctelephone: req.body.contactSecondaire_telephone,
+            linkedin: req.body.contactSecondaire_linkedin
         }
     })
 
@@ -56,19 +67,30 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {    
     const updatedAdherent = await Adherent.findByIdAndUpdate(req.params.id, {
         entreprise: req.body.entreprise,
+        activite: req.body.activite,
         section: req.body.section,
         adresse: req.body.adresse,
-        activite: req.body.activite,
         nom: req.body.nom,
         prenom: req.body.prenom,
-        email: req.body.prenom,
-        identifiant: req.body.prenom,
-        siteweb: req.body.prenom,
-        logo_url: req.body.prenom,
+        email: req.body.email,
+        identifiant: req.body.identifiant,
+        siteweb_url: req.body.siteweb_url,
+        logo_url: req.body.logo_url,
         contact: {
-            contact_titre: req.body.contact_titre,
-            contact_nom: req.body.contact_nom,
-            contact_prenom: req.body.contact_prenom
+            titre: req.body.contact_titre,
+            nom: req.body.contact_nom,
+            prenom: req.body.contact_prenom,
+            email: req.body.contact_email,
+            telephone: req.body.contact_telephone,
+            linkedin: req.body.contact_linkedin
+        },
+        contactSecondaire: {
+            titre: req.body.contactSecondaire_titre,
+            nom: req.body.contactSecondaire_nom,
+            prenom: req.body.contactSecondaire_prenom,
+            email: req.body.contactSecondaire_email,
+            ctelephone: req.body.contactSecondaire_telephone,
+            linkedin: req.body.contactSecondaire_linkedin
         }
     },
     { new : true }

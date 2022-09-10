@@ -7,7 +7,7 @@ const AdherentSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 2,
-        maxlength: 100
+        maxlength: 255
     },
     section: {
         type: String,
@@ -43,7 +43,7 @@ const AdherentSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 5,
-        maxlength: 150
+        maxlength: 100
     },
     identifiant: {
         type: String,
@@ -53,10 +53,10 @@ const AdherentSchema = new mongoose.Schema({
     siteweb: {
         type: String,
         minlength: 5,
+        maxlength: 100
     },
     logo_url: {
         type: String,
-        required: true,
         minlength: 5,
     },
     parution: {
@@ -69,7 +69,22 @@ const AdherentSchema = new mongoose.Schema({
         default: 1,
         required: true,
     },
-    contact: Contact.schema
+    contact: {
+        titre : String,
+        nom : String,
+        prenom : String,
+        telephone : String,
+        email : String,
+        linkedin : String
+    },
+    contactSecondaire: {
+        titre : String,
+        nom : String,
+        prenom : String,
+        telephone : String,
+        email : String,
+        linkedin : String
+    }
 });
 
 module.exports = new mongoose.model('Adherent', AdherentSchema);
