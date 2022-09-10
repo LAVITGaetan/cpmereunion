@@ -4,7 +4,13 @@ const app = express();
 const services = require('./services/render')
 require('dotenv').config();
 const adherentRoute = require('./routes/adherents');
+
+/* CORS  */
 const cors = require('cors');
+var corsOptions = {
+    origin: "*"
+};
+app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 3000;
 
@@ -12,7 +18,6 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-  app.use(cors(corsOptions));
 // Set view engine
 app.set('view engine', 'ejs')
 
