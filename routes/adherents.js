@@ -74,7 +74,7 @@ router.put('/:id', async (req, res) => {
         nom: req.body.nom,
         prenom: req.body.prenom,
         email: req.body.email,
-        telephone: 'test',
+        telephone: req.body.telephone,
         identifiant: req.body.identifiant,
         siteweb: req.body.siteweb,
         logo: req.body.logo,
