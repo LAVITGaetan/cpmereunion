@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
             nom: req.body.contactSecondaire_nom,
             prenom: req.body.contactSecondaire_prenom,
             email: req.body.contactSecondaire_email,
-            ctelephone: req.body.contactSecondaire_telephone,
+            telephone: req.body.contactSecondaire_telephone,
             linkedin: req.body.contactSecondaire_linkedin
         }
     })  

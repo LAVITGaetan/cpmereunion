@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 exports.index = async (req, res) => {
-    let api_uri = 'http://cpmereunion.herokuapp.com/api/adherents';
+    let api_uri = 'https://cpmereunion.herokuapp.com/api/adherents';
     let adherents = [];
     try {
         let response = await axios.get(api_uri)
@@ -17,7 +17,7 @@ exports.index = async (req, res) => {
 }
 
 exports.adherents = async (req, res) => {
-    let api_uri = 'http://cpmereunion.herokuapp.com/api/adherents';
+    let api_uri = 'https://cpmereunion.herokuapp.com/api/adherents';
     let adherents = [];
     try {
         const response = await axios.get(api_uri)
@@ -36,7 +36,7 @@ exports.newAdherent = (req, res) => {
 }
 
 exports.editAdherent = async (req, res) => {
-    let api_uri = `http://cpmereunion.herokuapp.com/api/adherents/${req.query.id}`;
+    let api_uri = `https://cpmereunion.herokuapp.com/api/adherents/${req.query.id}`;
     let adherents = [];
     try {
         const response = await axios.get(api_uri)
@@ -48,7 +48,7 @@ exports.editAdherent = async (req, res) => {
 }
 
 exports.getAdherent = async (req, res) => {
-    let api_uri = `http://cpmereunion.herokuapp.com/api/adherents/${req.query.id}`;
+    let api_uri = `https://cpmereunion.herokuapp.com/api/adherents/${req.query.id}`;
     let adherent = [];
     try {
         const response = await axios.get(api_uri)
