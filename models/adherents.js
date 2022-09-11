@@ -44,6 +44,11 @@ const AdherentSchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 100
     },
+    telephone: {
+        type: String,
+        minlength: 3,
+        maxlength: 30
+    },
     identifiant: {
         type: String,
         required: true,
@@ -54,7 +59,7 @@ const AdherentSchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 100
     },
-    logo_url: {
+    logo: {
         type: String,
         minlength: 5,
     },

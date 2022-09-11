@@ -30,3 +30,31 @@ exports.adherents = async (req, res) => {
         console.error(error)
     }
 }
+
+exports.newAdherent = (req, res) => {
+    res.render('pages/add-adherent', {title: 'Ajouter un adhérent'})
+}
+
+exports.editAdherent = async (req, res) => {
+    let api_uri = `http://cpmereunion.herokuapp.com/api/adherents/${req.query.id}`;
+    let adherents = [];
+    try {
+        const response = await axios.get(api_uri)
+        adherents.push(response.data)
+        res.render('pages/edit-adherent', { title: 'Modifier un adhérent', adherents: adherents })
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+exports.getAdherent = async (req, res) => {
+    let api_uri = `http://cpmereunion.herokuapp.com/api/adherents/${req.query.id}`;
+    let adherent = [];
+    try {
+        const response = await axios.get(api_uri)
+        adherent.push(response.data)
+        res.render('pages/profil-adherent', { title: 'Profil adhérent', adherent: adherent })
+    } catch (error) {
+        console.error(error)
+    }
+}

@@ -27,11 +27,13 @@ app.use(express.static('public'));
 // API ROUTES
 app.use('/api/adherents', adherentRoute);
 
-
 // ROUTES
 app.use('/accueil', services.index)
 
 app.get('/adherents', services.adherents)
+app.get('/add-adherent', services.newAdherent)
+app.get('/edit-adherent', services.editAdherent)
+app.get('/profil-adherent', services.getAdherent)
 
 // connect to database
 mongoose.connect(process.env.MONGO_URI,

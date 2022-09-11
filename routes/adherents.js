@@ -14,9 +14,10 @@ router.post('/', (req, res) => {
         nom: req.body.nom,
         prenom: req.body.prenom,
         email: req.body.email,
+        telephone: req.body.telephone,
         identifiant: req.body.identifiant,
-        siteweb_url: req.body.siteweb_url,
-        logo_url: req.body.logo_url,
+        siteweb: req.body.siteweb,
+        logo: req.body.logo,
         contact: {
             titre: req.body.contact_titre,
             nom: req.body.contact_nom,
@@ -33,7 +34,7 @@ router.post('/', (req, res) => {
             ctelephone: req.body.contactSecondaire_telephone,
             linkedin: req.body.contactSecondaire_linkedin
         }
-    })
+    })  
 
 
     adherent.save().then(adherent => {
@@ -73,9 +74,10 @@ router.put('/:id', async (req, res) => {
         nom: req.body.nom,
         prenom: req.body.prenom,
         email: req.body.email,
+        telephone: 'test',
         identifiant: req.body.identifiant,
-        siteweb_url: req.body.siteweb_url,
-        logo_url: req.body.logo_url,
+        siteweb: req.body.siteweb,
+        logo: req.body.logo,
         contact: {
             titre: req.body.contact_titre,
             nom: req.body.contact_nom,
