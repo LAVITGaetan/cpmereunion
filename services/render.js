@@ -47,6 +47,18 @@ exports.editAdherent = async (req, res) => {
     }
 }
 
+exports.editContact = async (req, res) => {
+    let api_uri = `https://cpmereunion.herokuapp.com/api/adherents/${req.query.id}`;
+    let adherents = [];
+    try {
+        const response = await axios.get(api_uri)
+        adherents.push(response.data)
+        res.render('pages/edit-contact', { title: 'Modifier une parution', adherents: adherents })
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 exports.getAdherent = async (req, res) => {
     let api_uri = `https://cpmereunion.herokuapp.com/api/adherents/${req.query.id}`;
     let adherent = [];

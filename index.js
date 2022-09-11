@@ -33,6 +33,7 @@ app.use('/accueil', services.index)
 app.get('/adherents', services.adherents)
 app.get('/add-adherent', services.newAdherent)
 app.get('/edit-adherent', services.editAdherent)
+app.get('/edit-contact', services.editContact)
 app.get('/profil-adherent', services.getAdherent)
 
 // connect to database
