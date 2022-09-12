@@ -103,7 +103,34 @@
                             <% } else { %>
                                 <div class="container-row">Aucune informations de contact</div>
                                 <% } %>
+                                <% if (adherent[0].contactSecondaire) { %>
 
+                                    <div class="container-row"><span class="row-label">Contact Secondaire :
+                                        </span>
+                                        <%= adherent[0].contactSecondaire.titre %>
+                                    </div>
+                                    <div class="container-row"><span class="row-label">Identité :
+                                        </span>
+                                        <%= adherent[0].contactSecondaire.prenom %>
+                                            <%= adherent[0].contactSecondaire.nom %>
+                                    </div>
+                                    <div class="container-row"><span class="row-label">Email :
+                                            <%= adherent[0].contactSecondaire.email %>
+                                        </span>
+        
+                                    </div>
+                                    <div class="container-row"><span class="row-label">Téléphone :
+                                        </span>
+                                        <%= adherent[0].contactSecondaire.telephone %>
+                                    </div>
+        
+                                    <div class="container-row"><span class="row-label">LinkedIn :
+                                        </span>
+                                        <%= adherent[0].contactSecondaire.linkedin %>
+                                    </div>
+                                    <% } else { %>
+                                        <div class="container-row">Aucune informations de contact</div>
+                                        <% } %>
                                     <div class="container-row"><span class="row-label">Parution :
                                         </span>
                                         <%= adherent[0].parution==1 ? 'activée' : 'desactivée' %>
@@ -203,16 +230,16 @@
                                 headers: {
                                     'Content-type': 'application/json'
                                 }
-                        })
-                        alert('Adhérent supprimé, vous allez être redirigé')
-                        setTimeout(() => {
+                            })
+                            alert('Adhérent supprimé, vous allez être redirigé')
+                            setTimeout(() => {
                                 document.location.assign('/adherents')
                             }, 1000);
-                    } catch (err) {
-                        console.log(`Une erreure est survenue : ${err}`);
+                        } catch (err) {
+                            console.log(`Une erreure est survenue : ${err}`);
+                        }
                     }
                 }
-            }
             </script>
             <script src="/js/index.js"></script>
 
