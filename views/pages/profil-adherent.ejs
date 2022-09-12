@@ -104,13 +104,13 @@
                                 <div class="container-row">Aucune informations de contact</div>
                                 <% } %>
 
-                                <div class="container-row"><span class="row-label">Parution :
-                                    </span>
-                                    <%= adherent[0].parution==1 ? 'activée' : 'desactivée' %>
-                                </div>
+                                    <div class="container-row"><span class="row-label">Parution :
+                                        </span>
+                                        <%= adherent[0].parution==1 ? 'activée' : 'desactivée' %>
+                                    </div>
 
-                                <div class="container-action"><a href="/edit-contact?id=<%= adherent[0]._id %>"
-                                        class="container-cta">Modifier</div></a>
+                                    <div class="container-action"><a href="/edit-contact?id=<%= adherent[0]._id %>"
+                                            class="container-cta">Modifier</div></a>
                     </div>
                     <% if (adherent[0].status==0) { %>
                         <div onclick="enableAdherent('<%= adherent[0]._id %>')" class="profil-cta">Activer l'
@@ -125,8 +125,8 @@
                                     <div class="profil-ctd" onclick="disableParution('<%= adherent[0]._id %>')">
                                         Désactiver la parution</div>
                                     <% }else {%>
-                                        <div class="profil-cta"
-                                            onclick="enableParution('<%= adherent[0]._id %>')">Activer la
+                                        <div class="profil-cta" onclick="enableParution('<%= adherent[0]._id %>')">
+                                            Activer la
                                             parution</div>
                                         <%} %>
                 </div>
@@ -147,7 +147,7 @@
                             }
                         })
                         setTimeout(() => {
-                        document.location.reload();
+                            document.location.reload();
                         }, 500);
                     }
                 }
@@ -160,7 +160,7 @@
                             }
                         })
                         setTimeout(() => {
-                        document.location.reload();
+                            document.location.reload();
                         }, 500);
                     }
                 }
@@ -173,7 +173,7 @@
                             }
                         })
                         setTimeout(() => {
-                        document.location.reload();
+                            document.location.reload();
                         }, 500);
                     }
                 }
@@ -186,22 +186,28 @@
                             }
                         })
                         setTimeout(() => {
-                        document.location.reload();
+                            document.location.reload();
                         }, 500);
                     }
                 }
 
                 function deleteAdherent(id) {
                     if (confirm('Voulez-vous vraiment supprimer cette adhérent ?')) {
-                        fetch(`http://cpmereunion.herokuapp.com/api/adherents/${id}`, {
-                            method: "DELETE",
-                            headers: {
-                                'Content-type': 'application/json'
-                            }
+                        try {
+                            fetch(`http://cpmereunion.herokuapp.com/api/adherents/${id}`, {
+                                method: "DELETE",
+                                headers: {
+                                    'Content-type': 'application/json'
+                                }
                         })
-                        document.location.assign('/adherents');
+                        setTimeout(() => {
+                                document.location.assign('/adherents')
+                            }, 1000);
+                    } catch (err) {
+                        console.log(`Une erreure est survenue : ${err}`);
                     }
                 }
+            }
             </script>
             <script src="/js/index.js"></script>
 
