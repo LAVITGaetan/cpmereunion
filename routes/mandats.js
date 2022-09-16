@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const Mandat = require('../models/mandat.model');
+const Mandat = require('../models/mandats');
 
 // Retrieve all mandats
 router.get('/', async (req, res) => {
