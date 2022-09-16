@@ -70,3 +70,35 @@ exports.getAdherent = async (req, res) => {
         console.error(error)
     }
 }
+
+// Mandats 
+exports.getMandats = async (req, res) => {
+    try {
+        let fetch = await axios.get(`${process.env.HEROKU_API}/mandats`)
+        res.render('pages/mandat/liste', { title: 'Liste des mandats', mandats: fetch.data })
+    } catch (error) {
+        res.status(500).send({ message: error.message })
+    }
+}
+
+exports.getMandat = async (req, res) => {
+    try {
+        let fetch = await axios.get(`${process.env.HEROKU_API}/mandats/${req.query.id}`)
+        res.render('pages/mandat/profil', { title: 'Profil mandat', mandat: fetch.data })
+    } catch (error) {
+        res.status(500).send({ message: error.message })
+    }
+}
+
+exports.addMandat = (req, res) => {
+    res.render('pages/mandat/add', { title: 'Ajouter un mandat' })
+}
+
+exports.editMandat = async (req, res) => {
+    try {
+        let fetch = await axios.get(`${process.env.HEROKU_API}/mandats/${req.query.id}`)
+        res.render('pages/mandat/edit', { title: 'Modifier un mandat', mandat: fetch.data })
+    } catch (error) {
+        res.status(500).send({ message: error.message })
+    }
+}

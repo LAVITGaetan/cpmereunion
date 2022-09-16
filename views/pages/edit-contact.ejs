@@ -138,11 +138,11 @@
             }
             console.log(adherent);
             try {
-                fetch(`https://cpmereunion.herokuapp.com/api/adherents/${id}`, {
+                fetch(`https://cpmereunion.herokuapp.com/api/adherents/contact/${id}`, {
                     headers: {
                         'Content-type': 'application/json'
                     },
-                    method: "PUT",
+                    method: "PATCH",
                     body: JSON.stringify(adherent)
                 })
                 // setTimeout(() => {

@@ -102,6 +102,13 @@ router.put('/:id', async (req, res) => {
     res.send(updatedAdherent);
 });
 
+router.patch('/contact/:id', async (req, res) => {
+    const adherent = await Adherent.findById(req.params.id);
+
+    if (!adherent) res.status(404).send({ message: `Cannot get adherent with id : ${req.params.id}` })
+    res.send(adherent);
+})
+
 // Delete adherent by ID
 router.delete('/:id', async (req, res) => {    
     const deletedAdherent = await Adherent.findByIdAndRemove(req.params.id);
