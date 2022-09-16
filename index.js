@@ -27,7 +27,7 @@ app.use(express.static('public'));
 
 // API ROUTES
 app.use('/api/adherents', adherentRoute);
-app.use('/api/adherents', mandatRoute);
+app.use('/api/mandats', mandatRoute);
 
 // ROUTES
 app.use('/accueil', services.index)
