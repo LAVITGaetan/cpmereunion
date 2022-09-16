@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
 router.patch('/:id', async (req, res) => {
     try {
         const mandat = await Mandat.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.send({ mandat })
+        res.send(mandat)
     } catch (error) {
         res.status(500).send({ message: error.message })
     }

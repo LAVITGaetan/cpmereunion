@@ -96,7 +96,7 @@
     <script>
 
         function editAdherent(event) {
-            event.preventDefault();
+                
             let id = document.getElementById('id').value;
             let adherent = {
                 entreprise: document.getElementById('entreprise').value,
@@ -120,8 +120,9 @@
                 method: "PUT",
                 body: JSON.stringify(adherent)
             })
+            alert('Mandat modifié, vous allez être redirigé')
             setTimeout(() => {
-            document.location.reload()
+            document.location.assign(`/profil-mandat?id=${id}`)
             }, 500);
 
             } catch (error) {
